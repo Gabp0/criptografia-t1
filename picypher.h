@@ -1,0 +1,27 @@
+#ifndef __PICYPHER__
+#define __PICYPHER__
+
+#include <string>
+
+using namespace std;
+
+class Picypher
+{
+private:
+    static const int BLOCK_SIZE = 16;
+    static const int CKEY_SIZE = 5;
+    // const string pi = "31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819644288109756659334461284756482337867831652712019091456485669234603486104543266482133936072602491412737245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094";
+    static const unsigned long long pi = 31415926535897932;
+    static string treatment(string input);
+    static char offsetChar(char c, int offset);
+
+    // 18,446,744,073,709,551,615
+
+    Picypher() {}
+
+public:
+    static string encode(string plaintext, unsigned long long key);
+    static string decode(string cypheredtext, unsigned long long key);
+};
+
+#endif
