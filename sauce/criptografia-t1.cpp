@@ -11,6 +11,7 @@ int main()
 
 	int i = 0;
 	int s = 8;
+
 	for (; text[i]; i++) {
 		if (text[i] != 32) {
 			cypher[s-8] = crypt(text[i], key[s-8]);

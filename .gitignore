@@ -1,5 +1,6 @@
 # Visual Studio
 .vs
+x64/Debug
 x64
 
 # Prerequisites
@@ -34,3 +35,4 @@ x64
 *.exe
 *.out
 *.app
+

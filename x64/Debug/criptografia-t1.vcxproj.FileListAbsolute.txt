@@ -1,1 +1,1 @@
-C:\Users\rodri\Documents\GitHub\criptografia-t1\x64\Debug\criptografia-t1.exe
+C:\Users\rodri\Documents\GitHub\criptografia-t1\x64\Debug\vigenere.exe
