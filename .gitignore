@@ -1,5 +1,6 @@
 # Visual Studio
 .vs
+.vscode
 x64/
 x64/Debug/
 x64/Debug/criptografia-t1.tlog/
@@ -36,4 +37,3 @@ x64/Debug/criptografia-t1.tlog/
 *.exe
 *.out
 *.app
-
