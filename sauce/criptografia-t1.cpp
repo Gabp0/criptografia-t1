@@ -10,7 +10,9 @@
 int main()
 {
 	String key = "nerfthis";
-	String text = "there is no reasonable excuse for not doing so in addition to the expected disruptions there are going to be greater and greater expectations on a massive scale The Star Wars cast seems to be getting ready for a full-scale assault in the months ahead";
+	String text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet purus sagittis eros sollicitudin euismod. Proin sit amet magna facilisis, mollis leo malesuada, feugiat nibh. Suspendisse hendrerit semper odio sed feugiat. In vel faucibus dui, id rhoncus magna. Sed fermentum, magna non hendrerit accumsan, est quam ultrices purus, ac pulvinar turpis ipsum sit amet ante. Maecenas justo massa, bibendum sed hendrerit nec, imperdiet sit amet nisl. Curabitur semper nec nunc at faucibus. Suspendisse semper tincidunt eros, non imperdiet augue ullamcorper non. Aliquam orci augue, posuere sit amet consectetur nec, pharetra in lorem. Nam semper tempus mauris eu hendrerit. Vestibulum at quam sollicitudin dolor ornare placerat in sed velit. Phasellus vitae enim lacus.";
+
+	
 	String cypher;
 
 	int i = 0;
@@ -19,11 +21,15 @@ int main()
 	out << key << nl << nl;
 	out << text << nl << nl;
 
-	cypher = crypt(text, key, 3);
+	text.append("hs ahead");
+
+	cypher = cryptBizarro(text, key);
 
 	out << cypher << nl << nl;
 
-	cypher = decrypt(cypher, key, 3);
+	cypher = decryptBizarro(cypher, key);
+
+	cypher.erase(cypher.size() - 8, 8);
 
 	out << cypher << nl << nl;
 
