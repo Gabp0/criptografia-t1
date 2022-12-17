@@ -1,35 +1,37 @@
 #include <iostream>
 #include "common.h"
 #include "vigenere.h"
+#include <string>
+
+#define String std::string 
+#define out std::cout 
+#define nl std::endl
 
 int main()
 {
-	char key[10000] = "nerfthis";
-	char text[] = "there is no reasonable excuse for not doing so in addition to the expected disruptions there are going to be greater and greater expectations on a massive scale The Star Wars cast seems to be getting ready for a full-scale assault in the months ahead";
-	char cypher[10000];
-	char hambur[10000];
+	String key = "nerfthis";
+	String text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet purus sagittis eros sollicitudin euismod. Proin sit amet magna facilisis, mollis leo malesuada, feugiat nibh. Suspendisse hendrerit semper odio sed feugiat. In vel faucibus dui, id rhoncus magna. Sed fermentum, magna non hendrerit accumsan, est quam ultrices purus, ac pulvinar turpis ipsum sit amet ante. Maecenas justo massa, bibendum sed hendrerit nec, imperdiet sit amet nisl. Curabitur semper nec nunc at faucibus. Suspendisse semper tincidunt eros, non imperdiet augue ullamcorper non. Aliquam orci augue, posuere sit amet consectetur nec, pharetra in lorem. Nam semper tempus mauris eu hendrerit. Vestibulum at quam sollicitudin dolor ornare placerat in sed velit. Phasellus vitae enim lacus.";
+
+	
+	String cypher;
 
 	int i = 0;
 	int s = 8;
 
-	for (; text[i]; i++) {
-		if (text[i] != 32) {
-			cypher[s-8] = crypt(text[i], key[s-8]);
-			key[s] = text[i];
-			s++;
-		}
-	}
-	cypher[s-8] = '\0';
+	out << key << nl << nl;
+	out << text << nl << nl;
 
-	std::cout << text << std::endl << std::endl << key << std::endl << std::endl;
-	std::cout << cypher << std::endl << std::endl;
-	i = 0;
-	s = 8;
-	for (; cypher[i]; i++, s++) {
-		hambur[i] = decrypt(cypher[i], key[i]);
-		key[s] = hambur[i];
-	}
-	hambur[i] = '\0';
-	std::cout << hambur;
+	
+
+	cypher = cryptBizarro(text, key);
+
+	out << cypher << nl << nl;
+
+	cypher = decryptBizarro(cypher, key);
+
+	
+
+	out << cypher << nl << nl;
+
 	return 0;
 }
