@@ -23,11 +23,11 @@ int main()
 
 	
 
-	cypher = cryptBizarro(text, key);
+	cypher = crypt(text, key, 5);
 
 	out << cypher << nl << nl;
 
-	cypher = decryptBizarro(cypher, key);
+	cypher = decrypt(cypher, key, 5);
 
 	
 

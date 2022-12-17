@@ -1,7 +1,7 @@
 # Visual Studio
 .vs
 .vscode
-
+x64/
 
 # Prerequisites
 *.d

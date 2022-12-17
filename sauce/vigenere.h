@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #define String std::string
-#define VinSize 28
+#define VinSize 95
 
 char cryptChar(int t, int k);
 char decryptChar(int t, int k);
