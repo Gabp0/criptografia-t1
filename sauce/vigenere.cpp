@@ -45,6 +45,7 @@ String crypt(String plain, String key, int n) {
 }
 
 String cryptBizarro(String plain, String key) {
+	plain.append("hs ahead");
 	String subplain;
 	for (int i = 0; i < 3; i++) {
 		subplain = plain.substr(plain.size() - key.size(), key.size());
@@ -77,6 +78,6 @@ String decrypt(String cypher, String key, int n) {
 String decryptBizarro(String cypher, String key) {
 	String subcypher;
 	cypher = decrypt(cypher, "rivjxlmw");
-	
+	cypher.erase(cypher.size() - 8, 8);
 	return cypher;
 }

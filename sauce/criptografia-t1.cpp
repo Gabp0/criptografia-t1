@@ -21,7 +21,7 @@ int main()
 	out << key << nl << nl;
 	out << text << nl << nl;
 
-	text.append("hs ahead");
+	
 
 	cypher = cryptBizarro(text, key);
 
@@ -29,7 +29,7 @@ int main()
 
 	cypher = decryptBizarro(cypher, key);
 
-	cypher.erase(cypher.size() - 8, 8);
+	
 
 	out << cypher << nl << nl;
 
