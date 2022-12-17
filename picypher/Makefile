@@ -1,2 +1,2 @@
 all:
-	gcc main.cpp picypher.cpp -lstdc++ -o main
+	gcc main.cpp picypher.cpp -lstdc++ -lgmp -lm -o main

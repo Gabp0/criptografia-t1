@@ -5,12 +5,13 @@
 int main(int argc, char const *argv[])
 {
     string input;
-    int key;
+    string key;
     getline(cin, input);
     cin >> key;
 
     input = Picypher::encode(input, key);
-    cout << input << endl;
+    cout << input << endl
+         << endl;
 
     input = Picypher::decode(input, key);
     cout << input << endl;
