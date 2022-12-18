@@ -11,9 +11,8 @@ string Picypher::encode(string plaintext, string key)
 {
     string output; // output string
 
-    plaintext = fill(plaintext);
-    cout << plaintext << endl
-         << endl;
+    plaintext = treatment(plaintext);
+    key = convertKey(key);
 
     string pip = genPip(stoi(key.substr(0, 2)));
     unsigned int f_offset = stoi(key.substr(1, 5));
@@ -56,6 +55,7 @@ string Picypher::decode(string cypheredtext, string key)
 {
     string output; // output string
 
+    key = convertKey(key);
     string pip = genPip(stoi(key.substr(0, 2)));
     unsigned int f_offset = stoi(key.substr(1, 5));
 
@@ -93,6 +93,20 @@ string Picypher::decode(string cypheredtext, string key)
     return output;
 }
 
+string Picypher::convertKey(string key)
+{
+    string int_key;
+
+    size_t i = 0;
+    while (int_key.size() < KEY_SIZE)
+    {
+        int_key += to_string(key[i] - '0');
+        i++;
+    }
+
+    return int_key;
+}
+
 string Picypher::genPip(int pow)
 {
     char pip[32536];
@@ -109,7 +123,7 @@ string Picypher::genPip(int pow)
     return pip_str;
 }
 
-string Picypher::fill(string input)
+string Picypher::treatment(string input)
 // treat the string
 {
     // transform(input.begin(), input.end(), input.begin(), ::toupper); // convert to uppercase
@@ -119,11 +133,6 @@ string Picypher::fill(string input)
         {
             replace(input.begin(), input.end(), i, 'X');
         }
-    }
-
-    for (size_t i = 0; i < BLOCK_SIZE - (input.size() % BLOCK_SIZE); i++) // fill the rest of the string
-    {
-        input += 'X';
     }
 
     return input;
