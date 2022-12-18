@@ -1,15 +1,18 @@
 #include "picypher.h"
+#include <iostream>
 #include <math.h>
-#include <bits/stdc++.h>
 #include <algorithm>
 #include <gmp.h>
 #include <string>
+#include <map>
 
 using namespace std;
 
 string Picypher::encode(string plaintext, string key)
 {
     string output; // output string
+
+    genSBox(key);
 
     plaintext = treatment(plaintext);
     key = convertKey(key);
@@ -30,19 +33,23 @@ string Picypher::encode(string plaintext, string key)
 
         for (size_t j = 0; j < ITR_NUM; j++)
         {
+
+            for (size_t k = 0; k < sub.size(); k++)
+            {
+                sub[k] = sbox[sub[k]];
+            }
+
             mpz_set_ui(offset, f_offset);
             mpz_pow_ui(offset, offset, pow(2, j));
             mpz_mod_ui(pip_pos, offset, pip.size());
             unsigned int off_mod = mpz_get_ui(pip_pos);
 
-            int k = 0;
-            for (char c : sub)
+            for (size_t k = 0; k < sub.size(); k++)
             {
                 int coff = pip[(off_mod + k) % pip.size()] - '0';
-
-                sub[k] = offsetChar(c, coff);
-                k++;
+                sub[k] = offsetChar(sub[k], coff);
             }
+
         }
 
         output += sub;
@@ -54,6 +61,8 @@ string Picypher::encode(string plaintext, string key)
 string Picypher::decode(string cypheredtext, string key)
 {
     string output; // output string
+
+    genSBox(key);
 
     key = convertKey(key);
     string pip = genPip(stoi(key.substr(0, 2)));
@@ -72,18 +81,22 @@ string Picypher::decode(string cypheredtext, string key)
 
         for (int j = ITR_NUM - 1; j >= 0; j--)
         {
+
             mpz_set_ui(offset, f_offset);
             mpz_pow_ui(offset, offset, pow(2, j));
             mpz_mod_ui(pip_pos, offset, pip.size());
             unsigned int off_mod = mpz_get_ui(pip_pos);
 
-            int k = 0;
-            for (char c : sub)
+            for (size_t k = 0; k < sub.size(); k++)
             {
                 int coff = pip[(off_mod + k) % pip.size()] - '0';
+                sub[k] = offsetChar(sub[k], -coff);
+            }
 
-                sub[k] = offsetChar(c, -coff);
-                k++;
+
+            for (size_t k = 0; k < sub.size(); k++)
+            {
+                sub[k] = sbox[sub[k]];
             }
         }
 
@@ -91,6 +104,34 @@ string Picypher::decode(string cypheredtext, string key)
     }
 
     return output;
+}
+
+void Picypher::genSBox(string key)
+{
+    string ascii = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+
+    for (string::size_type i = 0; i < key.size(); i++)
+    {
+        string::size_type j = i + 1;
+        while (j < ascii.size())
+        {
+            if (key[i] == ascii[j])
+            {
+                ascii.erase(j, 1);
+            }
+            else
+            {
+                ++j;
+            }
+        }
+    }
+    ascii = key + ascii;
+
+    sbox.clear();
+    for (size_t i = 0; i < 95; i++)
+    {
+        sbox[ascii[i]] = ascii[gf[i]];
+    }
 }
 
 string Picypher::convertKey(string key)
@@ -143,11 +184,11 @@ char Picypher::offsetChar(char c, int offset)
     int out = c + offset;
     if (out > 126)
     {
-        out = (out - 126) + 32;
+        out = (out - 127) + 32;
     }
     else if (out < 32)
     {
-        out = (out - 32) + 126;
+        out = (out - 32) + 127;
     }
     return out;
 }
