@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     {
         getline(cin, input);
         if (vigenereDiferente)
-        output = decryptDiferente(output, key);
+        output = decryptDiferente(input, key);
         else
         output = decrypt(input, key, 5);
         output = SBCS314::decode(output, key);
