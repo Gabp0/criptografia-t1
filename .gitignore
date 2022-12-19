@@ -1,3 +1,6 @@
+rgps
+*.txt
+
 # Visual Studio
 .vs
 .vscode
