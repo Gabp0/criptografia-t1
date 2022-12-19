@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "picypher.h"
+#include "sbcspi.h"
 
 int main(int argc, char const *argv[])
 {
@@ -9,11 +9,11 @@ int main(int argc, char const *argv[])
     getline(cin, input);
     cin >> key;
 
-    input = Picypher::encode(input, key);
+    input = SBCS314::encode(input, key);
     cout << input << endl
          << endl;
 
-    input = Picypher::decode(input, key);
+    input = SBCS314::decode(input, key);
     cout << input << endl;
 
     return 0;

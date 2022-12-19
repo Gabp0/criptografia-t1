@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __VRSS__
+#define __VRSS__
+
 #include <string>
 #define String std::string
 #define VinSize 95
@@ -11,3 +13,5 @@ String crypt(String plain, String key, int n);
 String decrypt(String chyper, String key, int n);
 String cryptBizarro(String plain, String key);
 String decryptBizarro(String chyper, String key);
+
+#endif
