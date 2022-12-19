@@ -7,7 +7,7 @@ using namespace commonVigenereDiferente;
 
 //Criptografa um char a partir de uma chave
 char cryptChar(int t, int k) {
-	return toAscii((fromAscii(t) + fromAscii(k)) % VinSize);
+	return toAscii((fromAscii(t) + fromAscii(k)) % VinDifSize);
 }
 
 //Decriptografa um char a partir de uma chave
@@ -22,11 +22,11 @@ char decryptChar(int t, int k) {
 
 	r = c;
 	if (k > t) {
-		r = VinSize - k;
+		r = VinDifSize - k;
 		r = r + t;
 	}
 
-	return toAscii(r % VinSize);
+	return toAscii(r % VinDifSize);
 }
 
 //Criptografa uma string a partir de uma chave
