@@ -16,6 +16,8 @@
 ## Sobre:
 
 * Cifra de substituição composta por duas etapas executadas em sequência:
+  * Criptografia feita a partir de uma iteração do SBCS314 seguida por 5 iterações do Vigenere
+  * Decriptografia feita a patir de 5 iterações do Vigenre seguida por uma iteração do SBCS314
 
 ### SBCS314
 
@@ -42,3 +44,15 @@
 
 * Essas duas etapas são executadas em sequência uma vez em cada uma das 16 rodadas.
 * Para a descriptografia, basta executar as duas etapas na ordem inversa da rodada 15 até a 0. É possível utilizar a mesma caixa de substituição, visto que esta é sempre simétrica.
+
+### Vigenere
+
+* Cifra de Vigenere utilizando 95 diferentes caracteres.
+  * Utiliza uma chave inicial, ou informada pelo usuario ou "nerfthis" como a default do algoritmo.
+  * Gera a chave para o tamanho igual do texto, concatenando a chave com o texto a ser cifrado.
+
+* Sem necessidade de criar uma matriz de 95x95, todas as substituições feitas matematicamente.
+  * Primeiro feito o deslocamento da tabela ascii aceitavel pelo algoritmo para 0 a 94.
+  * Depois feito a substituição.
+  * E finalmente deslocar a saida para a tabela ascii.
+	

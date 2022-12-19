@@ -1,9 +1,9 @@
-#include "vigenere.h"
+#include "vigenereDiferente.h"
 #include "common.h"
 #include <string>
 #include <iostream>
 
-using namespace commonVigenereNormal;
+using namespace commonVigenereDiferente;
 
 //Criptografa um char a partir de uma chave
 char cryptChar(int t, int k) {
@@ -63,11 +63,21 @@ String decrypt(String cypher, String key) {
 	return s;
 }
 
-//Roda o algoritmo n vezes
-String decrypt(String cypher, String key, int n) {
-	for (int i = 0; i < n; i++) {
-		cypher = decrypt(cypher, key);
+String cryptDiferente(String plain, String key) {
+	plain.append("hs ahead");
+	String subplain;
+	for (int i = 0; i < 3; i++) {
+		subplain = plain.substr(plain.size() - key.size(), key.size());
+		plain = crypt(plain, key);
+		key = crypt(key, subplain);
 	}
-	return cypher;
+	return plain;
 }
 
+
+String decryptDiferente(String cypher, String key) {
+	String subcypher;
+	cypher = decrypt(cypher, "rivjxlmw");
+	cypher.erase(cypher.size() - 8, 8);
+	return cypher;
+}

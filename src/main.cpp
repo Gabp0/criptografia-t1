@@ -2,6 +2,7 @@
 #include <algorithm>
 #include "sbcspi/sbcspi.h"
 #include "vigenererss/vigenere.h"
+#include "vigenererss/vigenereDiferente.h"
 
 using namespace std;
 
@@ -28,6 +29,7 @@ int main(int argc, char *argv[])
 
     bool decypher = cmdOptionExists(argv, argc, "-d");
     bool cypher = cmdOptionExists(argv, argc, "-c");
+    bool vigenereDiferente = cmdOptionExists(argv, argc, "-v");
 
     if (decypher && cypher)
     {
@@ -49,6 +51,9 @@ int main(int argc, char *argv[])
     {
         getline(cin, input);
         output = SBCS314::encode(input, key);
+        if (vigenereDiferente)
+        output = cryptDiferente(output, key);
+        else
         output = crypt(output, key, 5);
         cout << output << endl;
     }
@@ -56,6 +61,9 @@ int main(int argc, char *argv[])
     if (decypher)
     {
         getline(cin, input);
+        if (vigenereDiferente)
+        output = decryptDiferente(output, key);
+        else
         output = decrypt(input, key, 5);
         output = SBCS314::decode(output, key);
         cout << output << endl;

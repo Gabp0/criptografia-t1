@@ -1,14 +1,17 @@
 #include "common.h"
 
-int common::fromA(char t) {
+//Deslocamento para 95 caracteres
+int commonVigenereNormal::fromAscii(char t) {
 	return t - 32;
 }
 
-char common::toA(int t) {
+//Deslocamento para 95 caracteres
+char commonVigenereNormal::toAscii(int t) {
 	return t + 32;
 }
 
-int common::fromABizarro(char t) {
+//Deslocamento para 37 caracteres, lendo letras maiscula e codificando como minusculas
+int commonVigenereDiferente::fromAscii(char t) {
 	switch (t) {
 	case ' ':
 		return 26;
@@ -23,7 +26,8 @@ int common::fromABizarro(char t) {
 	}
 }
 
-char common::toABizarro(int t) {
+//Deslocamento para 37 caracteres
+char commonVigenereDiferente::toAscii(int t) {
 	switch (t) {
 	case 26:
 		return ' ';

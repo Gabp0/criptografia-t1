@@ -10,7 +10,7 @@ LDLIBS = -lm -lgmp
 # diretorios fonte
 VPATH = src:src/sbcspi:src/vigenererss 
 
-objs = main.o sbcspi.o vigenere.o common.o
+objs = main.o sbcspi.o vigenere.o common.o vigenereDiferente.o
 
 .PHONY: all clean purge
 
@@ -21,9 +21,10 @@ $(TARGET): $(objs)
 	$(CC) $(CPPFLAGS) $(LDLIBS) $(objs) -o rgps
 
 # compilacao
-main.o: main.cpp sbcspi.h vigenere.h
+main.o: main.cpp sbcspi.h vigenere.h vigenereDiferente.h
 sbcspi.o: sbcspi.cpp sbcspi.h
 vigenere.o: vigenere.cpp vigenere.h common.h
+vigenereDiferente.o: vigenereDiferente.cpp vigenereDiferente.h common.h
 common.o: common.cpp common.h
 
 # limpeza

@@ -1,12 +1,16 @@
 #ifndef __CMM__
 #define __CMM__
 
-namespace common
+namespace commonVigenereNormal
 {
-	int fromA(char t);
-	char toA(int t);
-	int fromABizarro(char t);
-	char toABizarro(int t);
+	int fromAscii(char t);
+	char toAscii(int t);
+}
+
+namespace commonVigenereDiferente
+{
+	int fromAscii(char t);
+	char toAscii(int t);
 }
 
 #endif
