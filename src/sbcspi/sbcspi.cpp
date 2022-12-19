@@ -1,4 +1,5 @@
 #include "sbcspi.h"
+#include <iostream>
 #include <math.h>
 #include <algorithm>
 #include <gmp.h>
