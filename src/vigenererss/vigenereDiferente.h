@@ -5,7 +5,7 @@
 #define String std::string
 #define VinDifSize 28
 
-String decryptDiferente(String cypher, String key);
-String cryptDiferente(String plain, String key);
+String decryptDiferente(String cypher);
+String cryptDiferente(String plain);
 
 #endif

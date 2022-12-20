@@ -55,7 +55,8 @@ String decryptDif(String cypher, String key) {
 	return s;
 }
 
-String cryptDiferente(String plain, String key) {
+String cryptDiferente(String plain) {
+	String key = "nerfthis";
 	plain.append("hs ahead");
 	String subplain;
 	for (int i = 0; i < 3; i++) {
@@ -67,7 +68,7 @@ String cryptDiferente(String plain, String key) {
 }
 
 
-String decryptDiferente(String cypher, String key) {
+String decryptDiferente(String cypher) {
 	cypher = decryptDif(cypher, "rivjxlmw");
 	if(cypher.size() >= 8){
 	cypher.erase(cypher.size() - 8, 8);

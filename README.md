@@ -6,10 +6,11 @@
 **É necessária a instalação da biblioteca GMP (https://gmplib.org/)**
  
 * Comando **make** faz a compilação dos fontes
-* **./rgps [-k chave] [-d] [-c]**
+* **./rgps [-k chave] [-d] [-c] [-v]**
  * **-k** indica a chave para criptografia. Consiste de uma palavra composta de letras/números/símbolos de no mínimo 3 caracteres. Caso não especificada, a chave padrão utilizada é *nerfthis*;
  * **-d** faz a descriptografia do texto cifrado;
  * **-c** faz a criptografia do texto claro;
+ * **-v** utiliza o algoritmo de vigenere diferente;
  * A entrada do texto é feita pela entrada padrão **stdin** e a saída pela saída padrão **stdout**
  * O algoritmo trabalha apenas com os caracteres entre *32* e *126* da tabela *ASCII*. Outros caracteres serão substituídos por *'X'*;
  
@@ -55,3 +56,13 @@
  * Primeiro feito o deslocamento da tabela ascii aceitável pelo algoritmo para 0 a 94.
  * Depois foi feita a substituição.
  * E finalmente deslocar a saída para a tabela ascii.
+
+### Vigenere Diferente
+
+* Cifra de Vigenere utilizando 28 diferentes caracteres. Transformando letras maiusculas para minusculas.
+ * Utiliza a chave default "nerfthis".
+ * Adiciona 8 caracteres ao texto.
+
+* Cifra 3 vezes mudando a key em cada iteração.
+* Possui uma key que realiza a decifra em uma iteração.
+  * Impossivel reverter a cifra de forma normal sem as chaves intermediarias, apenas com a chave especifica que realiza em apenas uma iteração.
