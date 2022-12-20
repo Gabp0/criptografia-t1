@@ -10,7 +10,7 @@ LDLIBS = -lm -lgmp
 # diretorios fonte
 VPATH = src:src/sbcspi:src/vigenererss 
 
-objs = main.o vigenere.o common.o vigenereDiferente.o
+objs = main.o vigenere.o common.o vigenereDiferente.o sbcspi.o
 
 .PHONY: all clean purge
 

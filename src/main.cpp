@@ -50,11 +50,17 @@ int main(int argc, char *argv[])
     if (cypher)
     {
         getline(cin, input);
-        output = SBCS314::encode(input, key);
+
         if (vigenereDiferente)
-        output = cryptDiferente(output, key);
+        {
+            output = cryptDiferente(input);
+            output = SBCS314::encode(output, key);
+        }
         else
-        output = crypt(output, key, 5);
+        {
+            output = SBCS314::encode(input, key);
+            output = crypt(output, key, 5);
+        }
         cout << output << endl;
     }
 
@@ -62,10 +68,15 @@ int main(int argc, char *argv[])
     {
         getline(cin, input);
         if (vigenereDiferente)
-        output = decryptDiferente(input, key);
+        {
+            output = SBCS314::decode(input, key);
+            output = decryptDiferente(output);
+        }
         else
-        output = decrypt(input, key, 5);
-        output = SBCS314::decode(output, key);
+        {
+            output = decrypt(input, key, 5);
+            output = SBCS314::decode(output, key);
+        }
         cout << output << endl;
     }
 
